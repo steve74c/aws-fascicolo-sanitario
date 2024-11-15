@@ -1,0 +1,12 @@
+
+<h1>Fascicolo sanitario</h1>
+<div style="width: 700px; height: 500px; background: rgb(250, 250, 245);">
+    <as-split direction="horizontal">
+      <as-split-area [size]="40">
+        <div-left-new (newItemEvent)="setItem($event)" ></div-left-new>
+      </as-split-area>
+      <as-split-area [size]="60">
+        <p>RIGHT</p>
+      </as-split-area>
+    </as-split>
+  </div>
