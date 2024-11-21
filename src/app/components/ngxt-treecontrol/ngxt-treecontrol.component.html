@@ -1,17 +1,24 @@
+<!--
+<ng-template #nodeTemplate let-item>
+  <span (click)="onNodeClick(item)">{{ item.name }}</span>
+</ng-template>
+-->
+
 <ng-template #treeTemplate let-nodes>
   <ul>
     <li *ngFor="let item of nodes">
-      <ng-container *ngTemplateOutlet="nodeTemplate; context: { $implicit: item }">
+      <span (click)="onNodeClick(item)">
+      <ng-container *ngTemplateOutlet="nodeTemplate; context: { $implicit: item }" ></ng-container>
+      <ng-container *ngIf="item.children && item.children.length > 0 && item.expanded" >
+        <ng-container *ngTemplateOutlet="treeTemplate; context: { $implicit: item.children }"></ng-container>
       </ng-container>
-      <ng-container *ngIf="item.children && item.children.length > 0 && item.expanded">
-        <ng-container *ngTemplateOutlet="
-            treeTemplate;
-            context: { $implicit: item.children }
-          "></ng-container>
-      </ng-container>
+    </span>
     </li>
   </ul>
 </ng-template>
+
 <ng-container *ngIf="treeData">
-  <ng-container *ngTemplateOutlet="treeTemplate; context: { $implicit: treeData }"></ng-container>
+  <ng-container *ngTemplateOutlet="treeTemplate; context: { $implicit: treeData }" ></ng-container>
 </ng-container>
+
+

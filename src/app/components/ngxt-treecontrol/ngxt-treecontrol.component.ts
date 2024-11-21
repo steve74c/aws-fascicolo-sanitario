@@ -3,7 +3,8 @@ import {
   ContentChild,
   Input,
   OnInit,
-  TemplateRef
+  TemplateRef,
+  AfterContentInit
 } from '@angular/core';
 import {CommonModule} from '@angular/common';
 import { TreeItem } from './tree-item';
@@ -31,4 +32,14 @@ export class NgxtTreecontrolComponent<T extends TreeItem> implements OnInit {
       throw new Error('This component needs ng-template for the tree node.');
     }
   }
+
+  // Funzione per gestire il clic sul nodo
+  onNodeClick(item: T): void {
+    console.log('Nodo cliccato:', item);  // Puoi scrivere qualsiasi proprietà del nodo
+  }
+
+   
+
+    
+
 }
